@@ -5,4 +5,6 @@
     <string name="text_home">首頁</string>
     <string name="text_favorites">最愛</string>
     <string name="text_categories">類別</string>
+    <string name="what_would_you_like_to_eat">你想吃什麼？</string>
+    <string name="over_popular_items">熱門的項目</string>
 </resources>
