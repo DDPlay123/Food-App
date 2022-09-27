@@ -1,12 +1,11 @@
-package com.side.project.foodapp
+package com.side.project.foodapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.side.project.foodapp.R
 import com.side.project.foodapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

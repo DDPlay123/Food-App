@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1165" />
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/drawable/ic_baseline_category_24.xml" value="0.1165" />
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1165" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_categories.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_favorites.xml" value="0.358695652173913" />
