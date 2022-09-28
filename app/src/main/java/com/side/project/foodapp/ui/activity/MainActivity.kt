@@ -1,4 +1,4 @@
-package com.side.project.foodapp.activity
+package com.side.project.foodapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
