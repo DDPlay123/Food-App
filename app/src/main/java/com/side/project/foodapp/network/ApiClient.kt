@@ -1,8 +1,7 @@
-package com.side.project.foodapp.retrofit
+package com.side.project.foodapp.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object ApiClient {
 
