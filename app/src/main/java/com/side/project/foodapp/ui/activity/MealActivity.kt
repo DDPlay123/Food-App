@@ -2,6 +2,7 @@ package com.side.project.foodapp.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -40,9 +41,9 @@ class MealActivity : AppCompatActivity() {
 
     private fun getArguments() {
         intent.extras?.let {
-            mealId = it.getString(KEY_MEAL_ID)!!
-            mealName = it.getString(KEY_MEAL_NAME)!!
-            mealThumb = it.getString(KEY_MEAL_THUMB)!!
+            mealId = it.getString(KEY_MEAL_ID).toString()
+            mealName = it.getString(KEY_MEAL_NAME).toString()
+            mealThumb = it.getString(KEY_MEAL_THUMB).toString()
         }
     }
 
@@ -51,6 +52,12 @@ class MealActivity : AppCompatActivity() {
         mealBinding.run {
             imgMealDetail.load(mealThumb)
             collapsingToolbar.title = mealName
+
+            setSupportActionBar(toolbar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+            toolbar.navigationIcon?.setTint(Color.WHITE)
+            toolbar.setNavigationOnClickListener { onBackPressed() }
 
             mealViewModel.getMealDetail(mealId)
             mealViewModel.observeMealDetailLiveData().observe(this@MealActivity) { meal ->
@@ -67,13 +74,12 @@ class MealActivity : AppCompatActivity() {
 
     private fun setListener() {
         mealBinding.run {
-            scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
-                if (scrollY == 0)
+            appbar.addOnOffsetChangedListener { _, verticalOffset ->
+                if (verticalOffset == 0)
                     imgVideo.visibility = View.VISIBLE
                 else
                     imgVideo.visibility = View.INVISIBLE
-                logE("t", scrollY.toString())
-            })
+            }
 
             imgVideo.setOnClickListener {
                 if (mealVideoLink.isNotEmpty())

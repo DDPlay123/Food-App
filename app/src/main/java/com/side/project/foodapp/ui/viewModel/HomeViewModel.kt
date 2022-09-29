@@ -3,32 +3,58 @@ package com.side.project.foodapp.ui.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.side.project.foodapp.data.Meal
-import com.side.project.foodapp.data.MealList
+import com.side.project.foodapp.data.*
 import com.side.project.foodapp.network.ApiClient
 import com.side.project.foodapp.utils.logE
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel : ViewModel() {
     private var randomMealLiveData = MutableLiveData<Meal>()
+    private var popularItemLiveData = MutableLiveData<List<MealsByCategory>>()
+    private var categoriesLiveData = MutableLiveData<List<Category>>()
 
     // Observer Data
     fun observeRandomMealLiveData(): LiveData<Meal> = randomMealLiveData
+
+    fun observePopularItemLiveData(): LiveData<List<MealsByCategory>> = popularItemLiveData
+
+    fun observeCategoriesLiveData(): LiveData<List<Category>> = categoriesLiveData
 
     // Functional
     fun getRandomMeal() {
         ApiClient.getRetrofit.getRandomMeal().enqueue(object : Callback<MealList> {
             override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
-                if (response.body() != null)
-                    randomMealLiveData.value = response.body()!!.meals[0]
-                else
-                    return
+                response.body()?.let { randomMealLiveData.value = it.meals[0] }
             }
 
             override fun onFailure(call: Call<MealList>, t: Throwable) {
                 logE("GetRandomMeal", t.message.toString())
+            }
+        })
+    }
+
+    fun getPopularItems() {
+        ApiClient.getRetrofit.getPopularItems("Seafood").enqueue(object : Callback<MealsByCategoryList> {
+                override fun onResponse(call: Call<MealsByCategoryList>, response: Response<MealsByCategoryList>) {
+                    response.body()?.let { popularItemLiveData.value = it.meals }
+                }
+
+                override fun onFailure(call: Call<MealsByCategoryList>, t: Throwable) {
+                    logE("GetPopularItems", t.message.toString())
+                }
+            })
+    }
+
+    fun getCategories() {
+        ApiClient.getRetrofit.getCategories().enqueue(object : Callback<CategoryList> {
+            override fun onResponse(call: Call<CategoryList>, response: Response<CategoryList>) {
+                response.body()?.let { categoriesLiveData.value = it.categories }
+            }
+
+            override fun onFailure(call: Call<CategoryList>, t: Throwable) {
+                logE("GetCategories", t.message.toString())
             }
         })
     }
