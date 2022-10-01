@@ -11,4 +11,8 @@
     <color name="primary">#F52C56</color>
     <color name="accent">#F52C56</color>
     <color name="g_black">#33405F</color>
+    <color name="prompt_UP">#FFFFFF</color>
+    <color name="prompt_DOWN">#AAAAAA</color>
+    <color name="red">#E6352B</color>
+    <color name="blue">#147EFB</color>
 </resources>

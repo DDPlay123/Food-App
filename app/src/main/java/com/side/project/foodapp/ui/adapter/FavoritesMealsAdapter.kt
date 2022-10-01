@@ -41,14 +41,17 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
     private val differ = AsyncListDiffer(this, itemCallback)
 
     // 寫入 Data
-    fun submitList(mealList: List<Meal>) = differ.submitList(mealList)
+    fun setData(mealList: List<Meal>) = differ.submitList(mealList)
+
+    // 讀取 Data
+    fun getData(position: Int): Meal = differ.currentList[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemMealBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.imgMeal.load(differ.currentList[position].strMealThumb)
-        holder.binding.tvMeal.text = differ.currentList[position].strMeal
+        holder.binding.imgMeal.load(getData(position).strMealThumb)
+        holder.binding.tvMeal.text = getData(position).strMeal
     }
 
     override fun getItemCount(): Int = differ.currentList.size

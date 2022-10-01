@@ -16,7 +16,7 @@ class MainViewModel: BaseViewModel() {
     private var randomMealLiveData = MutableLiveData<Meal>()
     private var popularItemLiveData = MutableLiveData<List<MealsByCategory>>()
     private var categoriesLiveData = MutableLiveData<List<Category>>()
-    private var favoritesMealsLiveData = MutableLiveData<List<Meal>>()
+    private var favoritesMealsLiveData = getAllMeals()
 
     // Observer Data
     fun observeRandomMealLiveData(): LiveData<Meal> = randomMealLiveData
@@ -63,6 +63,4 @@ class MainViewModel: BaseViewModel() {
             }
         })
     }
-
-    fun getFavoritesMeals() { Coroutines.io { favoritesMealsLiveData.postValue(getAllMeals()) } }
 }
