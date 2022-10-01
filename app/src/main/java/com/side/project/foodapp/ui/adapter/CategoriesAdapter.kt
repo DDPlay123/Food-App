@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.side.project.foodapp.data.Category
+import com.side.project.foodapp.data.model.Category
 import com.side.project.foodapp.databinding.ItemCategoryBinding
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {

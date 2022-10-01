@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
-import com.side.project.foodapp.data.Category
-import com.side.project.foodapp.data.MealsByCategory
-import com.side.project.foodapp.data.Meal
+import com.side.project.foodapp.data.model.Category
+import com.side.project.foodapp.data.model.MealsByCategory
+import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.databinding.FragmentHomeBinding
 import com.side.project.foodapp.ui.activity.CategoryMealsActivity
 import com.side.project.foodapp.ui.activity.MealActivity
 import com.side.project.foodapp.ui.adapter.CategoriesAdapter
 import com.side.project.foodapp.ui.adapter.MostPopularAdapter
-import com.side.project.foodapp.ui.viewModel.HomeViewModel
+import com.side.project.foodapp.ui.viewModel.MainViewModel
 import com.side.project.foodapp.utils.KEY_CATEGORY_NAME
 import com.side.project.foodapp.utils.KEY_MEAL_ID
 import com.side.project.foodapp.utils.KEY_MEAL_NAME
@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private lateinit var homeBinding: FragmentHomeBinding
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
 
     private lateinit var randomMeal: Meal
 
@@ -55,11 +55,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
-        homeViewModel.apply {
+        mainViewModel.apply {
             // get random meal
             getRandomMeal()
             observeRandomMealLiveData().observe(viewLifecycleOwner) { meal ->
-                if (meal.strMealThumb.isEmpty())
+                if (meal.strMealThumb!!.isEmpty())
                     homeBinding.pbRandomMeal.visibility = View.VISIBLE
                 else {
                     randomMeal = meal

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.side.project.foodapp.data.MealsByCategory
+import com.side.project.foodapp.data.model.MealsByCategory
 import com.side.project.foodapp.databinding.ItemPopularMealBinding
 
 class MostPopularAdapter : RecyclerView.Adapter<MostPopularAdapter.ViewHolder>() {

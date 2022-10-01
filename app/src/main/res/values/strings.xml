@@ -10,4 +10,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="what_would_you_like_to_eat">你想吃什麼？</string>
     <string name="over_popular_items">熱門的項目</string>
+
+    <string name="hint_already_add_favorite">已加入到最愛</string>
 </resources>
