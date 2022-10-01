@@ -1,8 +1,8 @@
 package com.side.project.foodapp.network
 
-import com.side.project.foodapp.data.CategoryList
-import com.side.project.foodapp.data.MealsByCategoryList
-import com.side.project.foodapp.data.MealList
+import com.side.project.foodapp.data.model.CategoryList
+import com.side.project.foodapp.data.model.MealsByCategoryList
+import com.side.project.foodapp.data.model.MealList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

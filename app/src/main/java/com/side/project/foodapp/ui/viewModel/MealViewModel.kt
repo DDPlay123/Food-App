@@ -2,16 +2,15 @@ package com.side.project.foodapp.ui.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.side.project.foodapp.data.Meal
-import com.side.project.foodapp.data.MealList
+import com.side.project.foodapp.data.model.Meal
+import com.side.project.foodapp.data.model.MealList
 import com.side.project.foodapp.network.ApiClient
 import com.side.project.foodapp.utils.logE
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MealViewModel: ViewModel() {
+class MealViewModel: BaseViewModel() {
     private var mealDetailLiveData = MutableLiveData<Meal>()
 
     // Observer Data

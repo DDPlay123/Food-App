@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.side.project.foodapp.data.MealsByCategory
+import com.side.project.foodapp.data.model.MealsByCategory
 import com.side.project.foodapp.databinding.ActivityCategoryMealsBinding
 import com.side.project.foodapp.ui.adapter.CategoryMealsAdapter
 import com.side.project.foodapp.ui.viewModel.CategoryMealsViewModel

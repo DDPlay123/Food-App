@@ -1,4 +1,4 @@
-package com.side.project.foodapp.data
+package com.side.project.foodapp.data.model
 
 data class MealsByCategory(
     val idMeal: String,

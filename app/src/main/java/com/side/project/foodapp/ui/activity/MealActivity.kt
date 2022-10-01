@@ -7,21 +7,20 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.NestedScrollView
 import coil.load
 import com.side.project.foodapp.R
+import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.databinding.ActivityMealBinding
 import com.side.project.foodapp.ui.viewModel.MealViewModel
-import com.side.project.foodapp.utils.KEY_MEAL_ID
-import com.side.project.foodapp.utils.KEY_MEAL_NAME
-import com.side.project.foodapp.utils.KEY_MEAL_THUMB
-import com.side.project.foodapp.utils.logE
+import com.side.project.foodapp.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MealActivity : AppCompatActivity() {
     private lateinit var mealBinding: ActivityMealBinding
     private val mealViewModel: MealViewModel by viewModel()
+
+    private var mealDetail: Meal? = null
 
     private lateinit var mealId: String
     private lateinit var mealName: String
@@ -63,7 +62,8 @@ class MealActivity : AppCompatActivity() {
             mealViewModel.observeMealDetailLiveData().observe(this@MealActivity) { meal ->
                 toggleLoading(false)
 
-                mealVideoLink = meal.strYoutube
+                mealDetail = meal
+                mealVideoLink = meal.strYoutube.toString()
                 tvCategory.text = "${getString(R.string.text_categories)}：${meal.strCategory}"
                 tvArea.text = "${getString(R.string.text_area)}：${meal.strArea}"
                 tvRecipe.text = "- ${getString(R.string.text_recipe)}："
@@ -87,6 +87,15 @@ class MealActivity : AppCompatActivity() {
                         logE("MealLink", mealVideoLink)
                         startActivity(this)
                     }
+            }
+
+            fabFavorite.setOnClickListener {
+                mealBinding.run {
+                    mealDetail?.let { meal ->
+                        mealViewModel.insertMeal(meal)
+                        displayToast(getString(R.string.hint_already_add_favorite))
+                    }
+                }
             }
         }
     }
