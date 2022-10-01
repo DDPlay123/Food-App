@@ -1,5 +1,6 @@
 package com.side.project.foodapp.ui.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.data.repo.MealRepo
@@ -13,5 +14,5 @@ abstract class BaseViewModel: ViewModel(), KoinComponent {
 
     fun deleteMeal(meal: Meal) = mealRepo.deleteMeal(meal)
 
-    fun getAllMeals(): List<Meal> = mealRepo.getAllMeals()
+    fun getAllMeals(): LiveData<List<Meal>> = mealRepo.getAllMeals()
 }

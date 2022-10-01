@@ -26,4 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        if (level <= TRIM_MEMORY_BACKGROUND)
+            System.gc()
+    }
 }
