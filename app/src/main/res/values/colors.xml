@@ -13,6 +13,7 @@
     <color name="g_black">#33405F</color>
     <color name="prompt_UP">#FFFFFF</color>
     <color name="prompt_DOWN">#AAAAAA</color>
+    <color name="support">#F4F4F4</color>
     <color name="red">#E6352B</color>
     <color name="blue">#147EFB</color>
 </resources>

@@ -11,7 +11,6 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.side.project.foodapp.R
-import com.side.project.foodapp.utils.logE
 
 class DialogManager(private val activity: Activity) {
     companion object {
