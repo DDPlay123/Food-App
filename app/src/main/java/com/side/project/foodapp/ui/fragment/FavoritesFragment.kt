@@ -53,7 +53,7 @@ class FavoritesFragment : Fragment() {
             // get favorites meals
             initFavoritesMealsRV()
             observeFavoritesMealsLiveData().observe(viewLifecycleOwner) { mealList ->
-                mealList.forEach { logE("Meal", it.strMeal.toString()) }
+//                mealList.forEach { logE("Meal", it.strMeal.toString()) }
                 favoritesMealsAdapter.setData(mealList)
             }
             // set favorites meals touch
