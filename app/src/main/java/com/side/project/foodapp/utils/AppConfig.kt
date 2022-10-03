@@ -1,10 +1,7 @@
 package com.side.project.foodapp.utils
 
 import android.app.Application
-import com.side.project.foodapp.di.daoModule
-import com.side.project.foodapp.di.dbModule
-import com.side.project.foodapp.di.repoModule
-import com.side.project.foodapp.di.viewModelModel
+import com.side.project.foodapp.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,6 +15,7 @@ class AppConfig : Application() {
                 viewModelModel,
                 daoModule,
                 dbModule,
+                managerModule,
                 repoModule
             ))
         }

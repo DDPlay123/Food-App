@@ -19,8 +19,7 @@ class AlignTextView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     constructor(context: Context, @Nullable attrs: AttributeSet?) : this(context, attrs, 0)
 
     private fun init(context: Context, attrs: AttributeSet?) {
-        val typedArray: TypedArray =
-            context.obtainStyledAttributes(attrs, R.styleable.AlignTextView)
+        val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.AlignTextView)
         alignOnlyOneLine = typedArray.getBoolean(R.styleable.AlignTextView_alignOnlyOneLine, false)
         typedArray.recycle()
         setTextColor(currentTextColor)
