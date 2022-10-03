@@ -1,13 +1,18 @@
 package com.side.project.foodapp.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.request.ErrorResult
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.databinding.ItemMealBinding
+import com.side.project.foodapp.utils.logE
 
 /**
  * 來源：https://juejin.cn/post/6903339348754694158
@@ -50,7 +55,21 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
         ViewHolder(ItemMealBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.imgMeal.load(getData(position).strMealThumb)
+        holder.binding.imgMeal.load(getData(position).strMealThumb) {
+            // 監聽
+            listener(
+                onStart = {
+                    holder.binding.imgPlaceholder.visibility = View.VISIBLE
+                },
+                onError = { _: ImageRequest, result: ErrorResult ->
+                    logE("RandomImage", result.throwable.message.toString())
+                    holder.binding.imgPlaceholder.visibility = View.VISIBLE
+                },
+                onSuccess = { _: ImageRequest, _: SuccessResult ->
+                    holder.binding.imgPlaceholder.visibility = View.GONE
+                }
+            )
+        }
         holder.binding.tvMeal.text = getData(position).strMeal
     }
 

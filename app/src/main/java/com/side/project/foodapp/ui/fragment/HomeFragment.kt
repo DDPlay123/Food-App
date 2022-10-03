@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import coil.request.ErrorResult
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import com.side.project.foodapp.data.model.Category
 import com.side.project.foodapp.data.model.MealsByCategory
 import com.side.project.foodapp.data.model.Meal
@@ -18,10 +21,7 @@ import com.side.project.foodapp.ui.activity.MealActivity
 import com.side.project.foodapp.ui.adapter.CategoriesAdapter
 import com.side.project.foodapp.ui.adapter.MostPopularAdapter
 import com.side.project.foodapp.ui.viewModel.MainViewModel
-import com.side.project.foodapp.utils.KEY_CATEGORY_NAME
-import com.side.project.foodapp.utils.KEY_MEAL_ID
-import com.side.project.foodapp.utils.KEY_MEAL_NAME
-import com.side.project.foodapp.utils.KEY_MEAL_THUMB
+import com.side.project.foodapp.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -60,14 +60,26 @@ class HomeFragment : Fragment() {
             getRandomMeal()
             observeRandomMealLiveData().observe(viewLifecycleOwner) { meal ->
                 if (meal.strMealThumb!!.isEmpty())
-                    homeBinding.pbRandomMeal.visibility = View.VISIBLE
+                    homeBinding.imgPlaceholder.visibility = View.VISIBLE
                 else {
                     randomMeal = meal
-                    homeBinding.pbRandomMeal.visibility = View.GONE
                     homeBinding.imgRandomMeal.load(meal.strMealThumb){
                         // 特效，淡入淡出
                         crossfade(true)
                         crossfade(300)
+                        // 監聽
+                        listener(
+                            onStart = {
+                                homeBinding.imgPlaceholder.visibility = View.VISIBLE
+                            },
+                            onError = { _: ImageRequest, result: ErrorResult ->
+                                logE("RandomImage", result.throwable.message.toString())
+                                homeBinding.imgPlaceholder.visibility = View.VISIBLE
+                            },
+                            onSuccess = { _: ImageRequest, _: SuccessResult ->
+                                homeBinding.imgPlaceholder.visibility = View.GONE
+                            }
+                        )
                     }
                 }
             }

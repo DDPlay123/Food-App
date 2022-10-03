@@ -68,6 +68,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_5sdp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,11 +81,13 @@
                     android:background="@color/accent"
                     android:scaleType="centerCrop" />
 
-                <ProgressBar
-                    android:id="@+id/pb_random_meal"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_gravity="center" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_20sdp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_image_search_24" />
 
             </androidx.cardview.widget.CardView>
 
@@ -110,7 +113,9 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_hint_2" />
+                app:layout_constraintTop_toBottomOf="@id/tv_hint_2"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_popular_meal" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_hint_3"
@@ -144,7 +149,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:scrollbars="none" />
+                    android:scrollbars="none"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/item_category"
+                    tools:spanCount="3" />
 
             </androidx.cardview.widget.CardView>
 

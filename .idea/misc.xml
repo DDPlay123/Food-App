@@ -12,12 +12,13 @@
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1165" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/activity_category_meals.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/activity_meal.xml" value="0.33" />
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/activity_meal.xml" value="0.25" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/dialog_bottom_prompt.xml" value="0.3609375" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_categories.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_favorites.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/item_category.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/item_favorites_meal.xml" value="0.3609375" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/item_meal.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/item_popular.xml" value="0.358695652173913" />
         <entry key="..\:/Users/a7032/Desktop/Food App/app/src/main/res/layout/item_popular_meal.xml" value="0.358695652173913" />

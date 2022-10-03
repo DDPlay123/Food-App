@@ -20,9 +20,20 @@
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_baseline_image_search_24"
-            tools:tint="@color/g_black" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:src="@drawable/ic_baseline_image_search_24"
+            android:tint="@color/accent"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/img_meal"
+            app:layout_constraintStart_toStartOf="@+id/img_meal"
+            app:layout_constraintTop_toTopOf="@+id/img_meal"
+            app:layout_constraintBottom_toBottomOf="@+id/img_meal"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_meal"
