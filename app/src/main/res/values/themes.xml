@@ -22,7 +22,7 @@
     </style>
     <!-- Bottom Sheet Dialog Style -->
     <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/BottomSheetDialogTheme</item>
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:animationDuration">@android:integer/config_longAnimTime</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
