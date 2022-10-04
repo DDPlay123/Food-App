@@ -1,11 +1,11 @@
 package com.side.project.foodapp.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +14,13 @@ import com.side.project.foodapp.databinding.DialogBottomPromptBinding
 import com.side.project.foodapp.databinding.FragmentFavoritesBinding
 import com.side.project.foodapp.ui.DialogManager
 import com.side.project.foodapp.ui.activity.MainActivity
+import com.side.project.foodapp.ui.activity.MealActivity
 import com.side.project.foodapp.ui.adapter.FavoritesMealsAdapter
 import com.side.project.foodapp.ui.viewModel.MainViewModel
-import com.side.project.foodapp.utils.logE
+import com.side.project.foodapp.utils.KEY_MEAL_ID
+import com.side.project.foodapp.utils.KEY_MEAL_NAME
+import com.side.project.foodapp.utils.KEY_MEAL_THUMB
+import com.side.project.foodapp.utils.displayToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoritesFragment : Fragment() {
@@ -47,6 +51,7 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init()
+        setListener()
     }
 
     private fun init() {
@@ -59,6 +64,23 @@ class FavoritesFragment : Fragment() {
             }
             // set favorites meals touch
             ItemTouchHelper(itemToucheHelper).attachToRecyclerView(favoritesBinding.rvFavorites)
+        }
+    }
+
+    private fun setListener() {
+        favoritesBinding.run {
+            favoritesMealsAdapter.onItemClick = { meal ->
+                Intent(activity, MealActivity::class.java).apply {
+                    this.putExtra(KEY_MEAL_ID, meal.idMeal)
+                    this.putExtra(KEY_MEAL_NAME, meal.strMeal)
+                    this.putExtra(KEY_MEAL_THUMB, meal.strMealThumb)
+                    startActivity(this)
+                }
+            }
+
+            favoritesMealsAdapter.onItemLongClick = { meal ->
+                activity?.displayToast(meal.strMeal.toString())
+            }
         }
     }
 

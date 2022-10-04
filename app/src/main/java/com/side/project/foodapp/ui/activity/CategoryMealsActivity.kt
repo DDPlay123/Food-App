@@ -1,6 +1,7 @@
 package com.side.project.foodapp.ui.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,6 +10,9 @@ import com.side.project.foodapp.databinding.ActivityCategoryMealsBinding
 import com.side.project.foodapp.ui.adapter.CategoryMealsAdapter
 import com.side.project.foodapp.ui.viewModel.CategoryMealsViewModel
 import com.side.project.foodapp.utils.KEY_CATEGORY_NAME
+import com.side.project.foodapp.utils.KEY_MEAL_ID
+import com.side.project.foodapp.utils.KEY_MEAL_NAME
+import com.side.project.foodapp.utils.KEY_MEAL_THUMB
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CategoryMealsActivity : AppCompatActivity() {
@@ -50,6 +54,14 @@ class CategoryMealsActivity : AppCompatActivity() {
     private fun setListener() {
         categoryMealsBinding.run {
             imgBack.setOnClickListener { onBackPressed() }
+            categoryMealsAdapter.onItemClick = { meal ->
+                Intent(applicationContext, MealActivity::class.java).apply {
+                    this.putExtra(KEY_MEAL_ID, meal.idMeal)
+                    this.putExtra(KEY_MEAL_NAME, meal.strMeal)
+                    this.putExtra(KEY_MEAL_THUMB, meal.strMealThumb)
+                    startActivity(this)
+                }
+            }
         }
     }
 

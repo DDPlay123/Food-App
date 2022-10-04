@@ -45,6 +45,9 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
     // 在背景執行緒比較 Item
     private val differ = AsyncListDiffer(this, itemCallback)
 
+    lateinit var onItemClick: ((Meal) -> Unit)
+    lateinit var onItemLongClick: ((Meal) -> Unit)
+
     // 寫入 Data
     fun setData(mealList: List<Meal>) = differ.submitList(mealList)
 
@@ -73,6 +76,11 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
         holder.binding.tvMealName.text = getData(position).strMeal
         holder.binding.tvCategory.text = getData(position).strCategory
         holder.binding.tvArea.text = getData(position).strArea
+        holder.itemView.setOnClickListener { onItemClick.invoke(getData(position)) }
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick.invoke(getData(position))
+            true
+        }
     }
 
     override fun getItemCount(): Int = differ.currentList.size

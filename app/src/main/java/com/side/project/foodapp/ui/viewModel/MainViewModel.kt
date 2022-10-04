@@ -18,6 +18,14 @@ class MainViewModel: BaseViewModel() {
     private var categoriesLiveData = MutableLiveData<List<Category>>()
     private var favoritesMealsLiveData = getAllMeals()
 
+//    init {
+//        // 避免重新呼叫。
+//        // Method 1：
+//        getRandomMeal()
+//    }
+    // Method 2：
+    private var savedRandomMeal: Meal ?= null
+
     // Observer Data
     fun observeRandomMealLiveData(): LiveData<Meal> = randomMealLiveData
 
@@ -29,9 +37,17 @@ class MainViewModel: BaseViewModel() {
 
     // Functional
     fun getRandomMeal() {
+        savedRandomMeal?.let { randomMeal ->
+            // 避免重新呼叫。
+            randomMealLiveData.postValue(randomMeal)
+            return
+        }
         ApiClient.getRetrofit.getRandomMeal().enqueue(object : Callback<MealList> {
             override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
-                response.body()?.let { randomMealLiveData.value = it.meals[0] }
+                response.body()?.let {
+                    savedRandomMeal = it.meals[0]
+                    randomMealLiveData.value = it.meals[0]
+                }
             }
 
             override fun onFailure(call: Call<MealList>, t: Throwable) {
