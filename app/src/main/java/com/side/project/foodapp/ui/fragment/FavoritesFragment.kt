@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.databinding.DialogBottomPromptBinding
@@ -64,7 +65,7 @@ class FavoritesFragment : Fragment() {
     private fun initFavoritesMealsRV() {
         favoritesMealsAdapter = FavoritesMealsAdapter()
         favoritesBinding.rvFavorites.apply {
-            layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = favoritesMealsAdapter
         }
     }

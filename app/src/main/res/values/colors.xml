@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primary">#F52C56</color>
+    <color name="yellow">#F5C285</color>
     <color name="accent">#F52C56</color>
+    <color name="accent_dark">#A51D39</color>
     <color name="g_black">#33405F</color>
     <color name="prompt_UP">#FFFFFF</color>
     <color name="prompt_DOWN">#AAAAAA</color>

@@ -11,7 +11,7 @@ import coil.request.ErrorResult
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.side.project.foodapp.data.model.Meal
-import com.side.project.foodapp.databinding.ItemMealBinding
+import com.side.project.foodapp.databinding.ItemFavoritesMealBinding
 import com.side.project.foodapp.utils.logE
 
 /**
@@ -52,7 +52,7 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
     fun getData(position: Int): Meal = differ.currentList[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemMealBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(ItemFavoritesMealBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.imgMeal.load(getData(position).strMealThumb) {
@@ -70,10 +70,12 @@ class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHold
                 }
             )
         }
-        holder.binding.tvMeal.text = getData(position).strMeal
+        holder.binding.tvMealName.text = getData(position).strMeal
+        holder.binding.tvCategory.text = getData(position).strCategory
+        holder.binding.tvArea.text = getData(position).strArea
     }
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    class ViewHolder(val binding: ItemMealBinding): RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemFavoritesMealBinding): RecyclerView.ViewHolder(binding.root)
 }

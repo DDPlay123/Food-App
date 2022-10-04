@@ -90,7 +90,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:drawableStart="@drawable/ic_baseline_category_24"
-                    android:drawableTint="@color/black"
+                    android:drawableTint="@color/g_black"
                     android:fontFamily="@font/ubuntu_medium"
                     android:text="@string/text_categories"
                     android:textSize="@dimen/_14ssp"
@@ -104,7 +104,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:drawableStart="@drawable/ic_baseline_location_on_24"
-                    android:drawableTint="@color/black"
+                    android:drawableTint="@color/g_black"
                     android:fontFamily="@font/ubuntu_medium"
                     android:text="@string/text_area"
                     android:textSize="@dimen/_14ssp"
@@ -121,7 +121,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/ubuntu_regular"
                 android:text="@string/text_recipe"
-                android:textColor="@color/black"
+                android:textColor="@color/g_black"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,17 @@
         android:id="@+id/layout_movable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_200sdp">
+        android:layout_marginTop="?actionBarSize">
+
+        <View
+            android:id="@+id/view_tool"
+            android:layout_width="@dimen/_3sdp"
+            android:layout_height="0dp"
+            android:background="@color/accent"
+            android:backgroundTint="@color/accent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fab_tool_video"
+            app:layout_constraintBottom_toBottomOf="@id/fab_tool_web"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_tool_video"
@@ -196,7 +206,7 @@
             android:clickable="true"
             android:contentDescription="@string/app_name"
             android:focusable="true"
-            android:src="@drawable/ic_baseline_more_horiz_24"
+            android:src="@drawable/ic_baseline_menu_book_24"
             app:backgroundTint="@color/accent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

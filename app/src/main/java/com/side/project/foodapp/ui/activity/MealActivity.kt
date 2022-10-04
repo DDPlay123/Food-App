@@ -6,8 +6,8 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.view.animation.RotateAnimation
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import coil.load
 import com.side.project.foodapp.R
 import com.side.project.foodapp.data.model.Meal
@@ -83,9 +83,14 @@ class MealActivity : AppCompatActivity() {
         mealBinding.run {
             appbar.addOnOffsetChangedListener { _, verticalOffset ->
                 if (verticalOffset == 0)
-                    fabTool.visibility = View.VISIBLE
-                else
                     fabTool.visibility = View.INVISIBLE
+                else
+                    fabTool.visibility = View.VISIBLE
+            }
+
+            viewTool.setOnClickListener {
+                isClickTool = !isClickTool
+                toggleTools(isClickTool)
             }
 
             fabTool.setOnClickListener {
