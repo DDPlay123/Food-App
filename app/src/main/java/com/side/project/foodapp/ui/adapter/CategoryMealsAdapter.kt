@@ -16,6 +16,8 @@ import com.side.project.foodapp.utils.logE
 class CategoryMealsAdapter : RecyclerView.Adapter<CategoryMealsAdapter.ViewHolder>() {
     private var mealsList = ArrayList<MealsByCategory>()
 
+    lateinit var onItemClick: ((MealsByCategory) -> Unit)
+
     @SuppressLint("NotifyDataSetChanged")
     fun setMealList(mealList: ArrayList<MealsByCategory>) {
         this.mealsList = mealList
@@ -42,6 +44,7 @@ class CategoryMealsAdapter : RecyclerView.Adapter<CategoryMealsAdapter.ViewHolde
             )
         }
         holder.binding.tvMeal.text = mealsList[position].strMeal
+        holder.itemView.setOnClickListener { onItemClick.invoke(mealsList[position]) }
     }
 
     override fun getItemCount(): Int = mealsList.size

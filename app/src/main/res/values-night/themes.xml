@@ -6,7 +6,8 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/accent</item>
+        <item name="android:statusBarColor" >@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
     </style>
