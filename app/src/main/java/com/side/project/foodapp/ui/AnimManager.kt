@@ -1,4 +1,4 @@
-package com.side.project.foodapp.utils
+package com.side.project.foodapp.ui
 
 import android.content.Context
 import android.view.animation.Animation

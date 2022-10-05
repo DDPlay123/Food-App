@@ -4,7 +4,7 @@ import androidx.room.Room
 import com.side.project.foodapp.data.db.MealDb
 import com.side.project.foodapp.data.repo.MealRepo
 import com.side.project.foodapp.data.repo.MealRepoImpl
-import com.side.project.foodapp.utils.AnimManager
+import com.side.project.foodapp.ui.AnimManager
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module

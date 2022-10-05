@@ -15,4 +15,7 @@
     <string name="hint_already_add_favorite">已加入到最愛</string>
     <string name="hint_you_can_not_undo">你無法返回這這個步驟！</string>
     <string name="hint_delete_this_item">刪除這個項目?</string>
+    <string name="hint_add_favorite">添加至最愛</string>
+    <string name="hint_go_detail">前往詳細頁面</string>
+    <string name="hint_random_meal">隨機推薦</string>
 </resources>

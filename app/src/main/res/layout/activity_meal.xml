@@ -92,8 +92,9 @@
                     android:drawableStart="@drawable/ic_baseline_category_24"
                     android:drawableTint="@color/g_black"
                     android:fontFamily="@font/ubuntu_medium"
+                    android:gravity="center|start"
                     android:text="@string/text_categories"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold"
                     tools:text="類別：Beef" />
 
@@ -106,8 +107,9 @@
                     android:drawableStart="@drawable/ic_baseline_location_on_24"
                     android:drawableTint="@color/g_black"
                     android:fontFamily="@font/ubuntu_medium"
+                    android:gravity="center|start"
                     android:text="@string/text_area"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold"
                     tools:text="地區：Taiwan" />
 
@@ -160,9 +162,9 @@
             android:layout_height="0dp"
             android:background="@color/accent"
             android:backgroundTint="@color/accent"
+            app:layout_constraintBottom_toBottomOf="@id/fab_tool_web"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/fab_tool_video"
-            app:layout_constraintBottom_toBottomOf="@id/fab_tool_web"/>
+            app:layout_constraintTop_toTopOf="@id/fab_tool_video" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_tool_video"
