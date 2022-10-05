@@ -18,4 +18,5 @@
     <string name="hint_add_favorite">添加至最愛</string>
     <string name="hint_go_detail">前往詳細頁面</string>
     <string name="hint_random_meal">隨機推薦</string>
+    <string name="hint_search_food">搜尋食物...</string>
 </resources>

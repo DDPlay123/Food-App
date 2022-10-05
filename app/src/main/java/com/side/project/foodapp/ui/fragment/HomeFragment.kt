@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
@@ -187,6 +188,11 @@ class HomeFragment : Fragment() {
                     this.putExtra(KEY_CATEGORY_NAME, category.strCategory)
                     startActivity(this)
                 }
+            }
+
+            imgSearch.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+                mActivity.toggleNavHost(true)
             }
         }
     }
