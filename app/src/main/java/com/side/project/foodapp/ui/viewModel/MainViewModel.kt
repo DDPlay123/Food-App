@@ -17,6 +17,7 @@ class MainViewModel: BaseViewModel() {
     private var popularItemLiveData = MutableLiveData<List<MealsByCategory>>()
     private var categoriesLiveData = MutableLiveData<List<Category>>()
     private var favoritesMealsLiveData = getAllMeals()
+    private var searchedMealsLiceData = MutableLiveData<List<Meal>>()
 
 //    init {
 //        // 避免重新呼叫。
@@ -34,6 +35,8 @@ class MainViewModel: BaseViewModel() {
     fun observeCategoriesLiveData(): LiveData<List<Category>> = categoriesLiveData
 
     fun observeFavoritesMealsLiveData(): LiveData<List<Meal>> = favoritesMealsLiveData
+
+    fun observeSearchedMealsLiceData(): LiveData<List<Meal>> = searchedMealsLiceData
 
     // Functional
     fun getRandomMeal() {
@@ -76,6 +79,18 @@ class MainViewModel: BaseViewModel() {
 
             override fun onFailure(call: Call<CategoryList>, t: Throwable) {
                 logE("GetCategories", t.message.toString())
+            }
+        })
+    }
+
+    fun searchMeals(searchQuery: String) {
+        ApiClient.getRetrofit.searchMeals(searchQuery).enqueue(object : Callback<MealList> {
+            override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
+                response.body()?.let { searchedMealsLiceData.value = it.meals }
+            }
+
+            override fun onFailure(call: Call<MealList>, t: Throwable) {
+                logE("SearchedMeals", t.message.toString())
             }
         })
     }

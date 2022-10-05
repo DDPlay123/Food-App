@@ -15,7 +15,7 @@ import com.side.project.foodapp.databinding.FragmentFavoritesBinding
 import com.side.project.foodapp.ui.DialogManager
 import com.side.project.foodapp.ui.activity.MainActivity
 import com.side.project.foodapp.ui.activity.MealActivity
-import com.side.project.foodapp.ui.adapter.FavoritesMealsAdapter
+import com.side.project.foodapp.ui.adapter.MealsAdapter
 import com.side.project.foodapp.ui.viewModel.MainViewModel
 import com.side.project.foodapp.utils.KEY_MEAL_ID
 import com.side.project.foodapp.utils.KEY_MEAL_NAME
@@ -29,7 +29,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var dialog: DialogManager
     private val mainViewModel: MainViewModel by viewModel()
 
-    private lateinit var favoritesMealsAdapter: FavoritesMealsAdapter
+    private lateinit var mealsAdapter: MealsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,9 @@ class FavoritesFragment : Fragment() {
             initFavoritesMealsRV()
             observeFavoritesMealsLiveData().observe(viewLifecycleOwner) { mealList ->
 //                mealList.forEach { logE("Meal", it.strMeal.toString()) }
-                favoritesMealsAdapter.setData(mealList)
+                mealList?.let { mealsAdapter.setData(it) }
+                favoritesBinding.rvFavorites.visibility = if (mealList.isNotEmpty()) View.VISIBLE else View.GONE
+                favoritesBinding.lottie.visibility = if (mealList.isNotEmpty()) View.GONE else View.VISIBLE
             }
             // set favorites meals touch
             ItemTouchHelper(itemToucheHelper).attachToRecyclerView(favoritesBinding.rvFavorites)
@@ -69,7 +71,7 @@ class FavoritesFragment : Fragment() {
 
     private fun setListener() {
         favoritesBinding.run {
-            favoritesMealsAdapter.onItemClick = { meal ->
+            mealsAdapter.onItemClick = { meal ->
                 Intent(activity, MealActivity::class.java).apply {
                     this.putExtra(KEY_MEAL_ID, meal.idMeal)
                     this.putExtra(KEY_MEAL_NAME, meal.strMeal)
@@ -78,17 +80,17 @@ class FavoritesFragment : Fragment() {
                 }
             }
 
-            favoritesMealsAdapter.onItemLongClick = { meal ->
+            mealsAdapter.onItemLongClick = { meal ->
                 activity?.displayToast(meal.strMeal.toString())
             }
         }
     }
 
     private fun initFavoritesMealsRV() {
-        favoritesMealsAdapter = FavoritesMealsAdapter()
+        mealsAdapter = MealsAdapter()
         favoritesBinding.rvFavorites.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = favoritesMealsAdapter
+            adapter = mealsAdapter
         }
     }
 
@@ -105,19 +107,19 @@ class FavoritesFragment : Fragment() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val position = viewHolder.adapterPosition
-            val meal: Meal = favoritesMealsAdapter.getData(position)
+            val meal: Meal = mealsAdapter.getData(position)
 
             val binding = DialogBottomPromptBinding.inflate(layoutInflater)
             dialog.showBottomDialog(binding, false).let {
                 binding.run {
                     dialog.setBottomCancelListener(object : DialogManager.BottomCancelListener {
                         override fun response() {
-                            favoritesMealsAdapter.notifyItemChanged(position)
+                            mealsAdapter.notifyItemChanged(position)
                             dialog.cancelBottomDialog()
                         }
                     })
                     cardCancel.setOnClickListener {
-                        favoritesMealsAdapter.notifyItemChanged(position)
+                        mealsAdapter.notifyItemChanged(position)
                         dialog.cancelBottomDialog()
                     }
                     cardDelete.setOnClickListener {

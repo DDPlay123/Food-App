@@ -7,11 +7,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
 import coil.load
 import com.side.project.foodapp.R
 import com.side.project.foodapp.data.model.Meal
 import com.side.project.foodapp.databinding.ActivityMealBinding
+import com.side.project.foodapp.ui.AnimManager
 import com.side.project.foodapp.ui.viewModel.MealViewModel
 import com.side.project.foodapp.utils.*
 import org.koin.android.ext.android.inject

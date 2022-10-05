@@ -29,7 +29,7 @@ import com.side.project.foodapp.utils.logE
  * 3. notifyItemMoved()
  * 4. notifyItemRangeChanged()
  * **/
-class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.ViewHolder>() {
+class MealsAdapter: RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
 
     private val itemCallback = object : DiffUtil.ItemCallback<Meal>() {
         // 比對新舊 Item
