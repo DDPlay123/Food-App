@@ -1,6 +1,7 @@
 package com.side.project.foodapp.ui.fragment
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -63,6 +64,14 @@ class HomeFragment : Fragment() {
         setListener()
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) // 橫向
+            dialog.cancelAllDialog()
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) // 直向
+            dialog.cancelAllDialog()
+    }
+
     private fun init() {
         mainViewModel.apply {
             // get random meal
@@ -113,7 +122,7 @@ class HomeFragment : Fragment() {
         homeBinding.run {
             imgRandomMeal.setOnClickListener {
                 val binding = DialogBottomSheetMealBinding.inflate(layoutInflater)
-                dialog.showBottomDialog(binding, false).let {
+                dialog.showBottomDialog(binding, true).let {
                     binding.run {
                         layoutContent.visibility = View.VISIBLE
                         tvHeader.text = getString(R.string.hint_random_meal)
@@ -150,7 +159,7 @@ class HomeFragment : Fragment() {
 
             mostPopularAdapter.onItemClick = { meal ->
                 val binding = DialogBottomSheetMealBinding.inflate(layoutInflater)
-                dialog.showBottomDialog(binding, false).let {
+                dialog.showBottomDialog(binding, true).let {
                     binding.run {
                         layoutContent.visibility = View.GONE
                         tvHeader.text = getString(R.string.over_popular_items)
