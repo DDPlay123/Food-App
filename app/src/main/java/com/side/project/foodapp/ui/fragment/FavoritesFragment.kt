@@ -1,6 +1,7 @@
 package com.side.project.foodapp.ui.fragment
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -52,6 +53,14 @@ class FavoritesFragment : Fragment() {
 
         init()
         setListener()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) // 橫向
+            dialog.cancelAllDialog()
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) // 直向
+            dialog.cancelAllDialog()
     }
 
     private fun init() {
@@ -110,7 +119,7 @@ class FavoritesFragment : Fragment() {
             val meal: Meal = mealsAdapter.getData(position)
 
             val binding = DialogBottomPromptBinding.inflate(layoutInflater)
-            dialog.showBottomDialog(binding, false).let {
+            dialog.showBottomDialog(binding, true).let {
                 binding.run {
                     dialog.setBottomCancelListener(object : DialogManager.BottomCancelListener {
                         override fun response() {

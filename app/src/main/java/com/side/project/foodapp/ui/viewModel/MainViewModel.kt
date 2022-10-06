@@ -2,12 +2,9 @@ package com.side.project.foodapp.ui.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.side.project.foodapp.data.model.*
 import com.side.project.foodapp.network.ApiClient
-import com.side.project.foodapp.utils.Coroutines
 import com.side.project.foodapp.utils.logE
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
